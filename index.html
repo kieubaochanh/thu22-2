@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Lá Thư</title>
+
+<style>
+
+body{
+    background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:"Times New Roman", serif;
+}
+
+.envelope{
+    position:relative;
+    width:380px;
+    height:240px;
+    background:#f08080;
+    cursor:pointer;
+    perspective:1000px;
+}
+
+.cover{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:#e06666;
+    transform-origin:top;
+    transition:1s;
+}
+
+.letter{
+    position:absolute;
+    background:white;
+    width:90%;
+    height:200px;
+    top:20px;
+    left:5%;
+    padding:20px;
+    box-shadow:0 10px 20px rgba(0,0,0,0.3);
+    transform:translateY(100px);
+    opacity:0;
+    transition:1s;
+    overflow:auto;
+}
+
+#text{
+    white-space: pre-line;
+    line-height:1.6;
+    font-size:16px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="envelope" onclick="openLetter()">
+    <div class="cover"></div>
+
+    <div class="letter">
+        <p id="text"></p>
+    </div>
+</div>
+
+<script>
+
+let text = `Gạo ơi,
+
+Anh viết những dòng này khi đã thực sự bình tâm và nhìn nhận lại tất cả những gì đã xảy ra giữa chúng mình trong tháng qua. Anh biết, một lời xin lỗi có lẽ là chưa đủ để bù đắp cho sự thất vọng mà anh đã gây ra cho em.
+
+Anh xin lỗi vì đã lén đi chơi mà không nói với em, và tệ hơn nữa là anh đã chọn cách nói dối khi em hỏi đến. Anh biết mình đã sai khi làm mất niềm tin mà em dành cho anh. Thực sự, lúc đó anh đã rất sợ. Anh sợ khi biết chuyện em sẽ nổi giận, sẽ mất bình tĩnh, và điều anh sợ nhất là thấy em làm đau chính mình.
+
+Anh đã quá hèn nhát khi nghĩ rằng một lời nói dối có thể giữ được sự yên bình, mà quên mất rằng sự chân thành mới là thứ duy nhất giữ chúng ta lại gần nhau.
+
+Anh hiểu rằng lời nói dối của anh vô tình lại làm em tổn thương sâu sắc hơn. Anh xin lỗi vì đã không đủ bản lĩnh để đối mặt cùng em, để cùng em vượt qua những cảm xúc tiêu cực ấy một cách đúng đắn.
+
+Cảm ơn Gạo vì đã vẫn ở đây, vẫn kiên nhẫn với một người còn nhiều thiếu sót như anh.
+
+Cho anh thêm cơ hội để chăm sóc và bảo vệ em theo cách đúng đắn hơn, em nhé? và anh hứa sẽ không bao giờ tái phạm nữa.
+
+Thương em rất nhiều.
+
+-Bảo Chánh-`;
+
+let i = 0;
+
+function typeWriter(){
+    if(i < text.length){
+        document.getElementById("text").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter,25);
+    }
+}
+
+function openLetter(){
+
+    document.querySelector(".cover").style.transform="rotateX(180deg)";
+
+    let letter = document.querySelector(".letter");
+
+    letter.style.transform="translateY(-50px)";
+    letter.style.opacity="1";
+
+    setTimeout(typeWriter,500);
+}
+
+</script>
+
+</body>
+</html>
